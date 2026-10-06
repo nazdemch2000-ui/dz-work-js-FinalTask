@@ -1,7 +1,7 @@
 import "./style.css";
 import { Store } from "./component/core/Store";
 import { initialState } from "./component/state/State";
-import { StorageService } from "./component/services/StorageServises";
+import { StorageService } from "./component/services/StorageService";
 import { Board } from "./component/board/Board";
 
 const savedState = StorageService.load();

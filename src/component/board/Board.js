@@ -3,7 +3,7 @@ import { Modal } from "../modal/Modal";
 import { Component } from "../core/Component.js";
 import { createCardElement } from "../card/Card";
 import { ACTIONS } from "../state/action.js";
-import { Counter } from "../counter/countre.js";
+import { Counter } from "../counter/Сounter.js";
 import { Statistics } from "../ModalStatistic/Statistics.js";
 
 export class Board extends Component {

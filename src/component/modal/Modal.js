@@ -189,15 +189,15 @@ export class Modal extends Component {
         });
       }
 
-      if (this.onSubmit) {
-        this.onSubmit(expense);
-      }
-
       closeModal();
     });
   }
 
   destroy() {
+    if (this.unsubscribe) {
+      this.unsubscribe();
+    }
+
     this.container.innerHTML = "";
   }
 }
