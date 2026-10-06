@@ -1,10 +1,10 @@
 export const initialState = {
   categories: [
-    { id: "product", title: "Product" },
-    { id: "transport", title: "Transport" },
-    { id: "food", title: "Food" },
-    { id: "entertainment", title: "Entertainment" },
-    { id: "other", title: "Other" },
+    { id: "product", title: "Продукти" },
+    { id: "transport", title: "Транспорт" },
+    { id: "entertainment", title: "Розваги" },
+    { id: "utilities", title: "Комунальні" },
+    { id: "other", title: "Інше" },
   ],
 
   expenses: [

@@ -28,7 +28,7 @@ export class Board {
 
             <select class="category-filter" id="categoryFilter">
               <option value="all">Всі категорії</option>
-              <option value="food">Продукти</option>
+              <option value="product">Продукти</option>
               <option value="transport">Транспорт</option>
               <option value="entertainment">Розваги</option>
               <option value="utilities">Комунальні</option>
