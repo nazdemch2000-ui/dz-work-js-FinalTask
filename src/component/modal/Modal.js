@@ -1,11 +1,11 @@
 import "./modal.css";
-
-export class Modal {
-  constructor(container, categories, expense = null, onSubmit, onClose) {
-    this.container = container;
+import { ACTIONS } from "../state/action";
+import { Component } from "../core/Component";
+export class Modal extends Component {
+  constructor(container, store, categories, expense = null, onClose) {
+    super(container, store);
     this.categories = categories;
     this.expense = expense;
-    this.onSubmit = onSubmit;
     this.onClose = onClose;
 
     this.render();
@@ -13,6 +13,7 @@ export class Modal {
   }
 
   render() {
+    const state = this.store.getState();
     const isEdit = this.expense !== null;
 
     this.container.innerHTML = `
@@ -70,21 +71,20 @@ export class Modal {
               </label>
 
               <select id="expenseCategory" class="form-select">
-                ${this.categories
+                ${state.categories
                   .map(
                     (category) => `
                       <option
                         value="${category.id}"
                         ${
-                          isEdit &&
-                          this.expense.category === category.id
+                          isEdit && this.expense.category === category.id
                             ? "selected"
                             : ""
                         }
                       >
                         ${category.title}
                       </option>
-                    `
+                    `,
                   )
                   .join("")}
               </select>
@@ -156,25 +156,38 @@ export class Modal {
       event.preventDefault();
 
       const name = document.getElementById("expenseName").value.trim();
-      const amount = Number(
-        document.getElementById("expenseAmount").value
-      );
+      const amount = Number(document.getElementById("expenseAmount").value);
       const category = document.getElementById("expenseCategory").value;
       const date = document.getElementById("expenseDate").value;
 
       if (!name || !amount || !date) {
         return;
       }
+      if (this.expense) {
+        this.store.dispatch({
+          type: ACTIONS.EDIT_EXPENSE,
+          payload: {
+            ...this.expense,
+            name,
+            amount,
+            category,
+            date,
+          },
+        });
+      } else {
+        const expense = {
+          id: this.expense ? this.expense.id : "expense-" + crypto.randomUUID(),
+          name,
+          amount,
+          category,
+          date,
+        };
 
-      const expense = {
-        id: this.expense
-          ? this.expense.id
-          : "expense-" + crypto.randomUUID(),
-        name,
-        amount,
-        category,
-        date,
-      };
+        this.store.dispatch({
+          type: ACTIONS.ADD_EXPENSE,
+          payload: expense,
+        });
+      }
 
       if (this.onSubmit) {
         this.onSubmit(expense);

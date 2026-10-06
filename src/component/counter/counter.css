@@ -1,0 +1,26 @@
+.total-expenses {
+  margin-bottom: 30px;
+  padding: 25px;
+
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+
+  background-color: #f8fafc;
+  text-align: center;
+}
+
+.total-title {
+  margin: 0 0 8px;
+
+  font-size: 16px;
+  font-weight: 500;
+  color: #6b7280;
+}
+
+.total-amount {
+  margin: 0;
+
+  font-size: 32px;
+  font-weight: 700;
+  color: #2563eb;
+}

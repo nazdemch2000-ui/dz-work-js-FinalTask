@@ -1,5 +1,6 @@
 export const initialState = {
   categories: [
+    { id: "all", title: "Всі категорії" },
     { id: "product", title: "Продукти" },
     { id: "transport", title: "Транспорт" },
     { id: "entertainment", title: "Розваги" },

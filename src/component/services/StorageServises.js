@@ -1,5 +1,5 @@
 const STORAGE_KEY = "board_data";
- 
+
 export const StorageService = {
   // Завантаження даних із localStorage с захистом від помилок
   load() {
@@ -11,7 +11,7 @@ export const StorageService = {
       return null;
     }
   },
- 
+
   // Збереження даних у localStorage
   save(state) {
     try {
